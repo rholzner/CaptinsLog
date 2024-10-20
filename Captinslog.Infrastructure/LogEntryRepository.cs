@@ -5,14 +5,12 @@ namespace Captinslog.Infrastructure;
 
 public class LogEntryRepository : ILogEntryRepository
 {
-    private readonly LogEntryDatabaseContext _db;
     private readonly ILogEntryDatabaseContextHelper _dbHelper;
     private readonly IJsonSerializer _jsonSerializer;
 
-    public LogEntryRepository(IJsonSerializer jsonSerializer, LogEntryDatabaseContext logEntryDatabaseContext, ILogEntryDatabaseContextHelper logEntryDatabaseContextHelper)
+    public LogEntryRepository(IJsonSerializer jsonSerializer, ILogEntryDatabaseContextHelper logEntryDatabaseContextHelper)
     {
         _jsonSerializer = jsonSerializer;
-        _db = logEntryDatabaseContext;
         _dbHelper = logEntryDatabaseContextHelper;
     }
 

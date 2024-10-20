@@ -20,10 +20,10 @@ public class CorrelationIdProvider : ICorrelationIdProvider, IDisposable
     {
         if (_correlationId != Guid.Empty)
         {
-            return OperationResult<Guid>.Success(_correlationId);
+            return _correlationId;
         }
         _correlationId = Guid.NewGuid();
-        return OperationResult<Guid>.Success(_correlationId);
+        return _correlationId;
     }
     public void Dispose()
     {
