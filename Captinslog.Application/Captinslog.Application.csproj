@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0-rc.2.24473.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Captinslog.Domain\Captinslog.Domain.csproj" />
     <ProjectReference Include="..\FlowCode.Application\FlowCode.Application.csproj" />
   </ItemGroup>
