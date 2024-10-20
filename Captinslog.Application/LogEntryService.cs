@@ -6,6 +6,9 @@ public interface ILogEntryService
 {
     OperationResult Add(LogEntry logEntry);
     OperationResult Add<T>(LogEntry<T> logEntry);
+    OperationResult Add(Guid storyId, string message, params IEnumerable<string> tags);
+    OperationResult Add<T>(Guid storyId, string message,T data, params IEnumerable<string> tags);
+
     OperationResult Add(Guid storyId, string message, bool success, params IEnumerable<string> tags);
     OperationResult Add<T>(Guid storyId, string message, bool success, T data, params IEnumerable<string> tags);
     OperationResult Add(OperationResult operationResult, Guid storyId, string message, params IEnumerable<string> tags);
@@ -119,6 +122,47 @@ public class LogEntryService : ILogEntryService
             result =>
             {
                 logEntry.CorrelationId = result;
+                return _logEntryRepository.Add(logEntry);
+            }
+        );
+    }
+
+    public OperationResult Add(Guid storyId, string message, params IEnumerable<string> tags)
+    {
+        var correlationId = _correlationIdProvider.BeginScope();
+        return correlationId.OnSuccess(
+            result =>
+            {
+                var logEntry = new LogEntry
+                {
+                    StoryId = storyId,
+                    Message = message,
+                    IsSuccess = true,
+                    Date = DateTime.UtcNow,
+                    CorrelationId = result,
+                    Tags = tags
+                };
+                return _logEntryRepository.Add(logEntry);
+            }
+        );
+    }
+
+    public OperationResult Add<T>(Guid storyId, string message, T data, params IEnumerable<string> tags)
+    {
+        var correlationId = _correlationIdProvider.BeginScope();
+        return correlationId.OnSuccess(
+            result =>
+            {
+                var logEntry = new LogEntry<T>
+                {
+                    StoryId = storyId,
+                    Message = message,
+                    IsSuccess = true,
+                    Date = DateTime.UtcNow,
+                    CorrelationId = result,
+                    Tags = tags,
+                    Data = data
+                };
                 return _logEntryRepository.Add(logEntry);
             }
         );

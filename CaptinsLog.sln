@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowCode.Domain", "FlowCode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captinslog.Infrastructure", "Captinslog.Infrastructure\Captinslog.Infrastructure.csproj", "{DEB51DAB-0C2D-4967-8297-275DBE3F445C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captinslog.Example", "Captinslog.Example\Captinslog.Example.csproj", "{3734387C-F363-4D4E-9DB3-6C302AA58773}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{DEB51DAB-0C2D-4967-8297-275DBE3F445C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEB51DAB-0C2D-4967-8297-275DBE3F445C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEB51DAB-0C2D-4967-8297-275DBE3F445C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3734387C-F363-4D4E-9DB3-6C302AA58773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3734387C-F363-4D4E-9DB3-6C302AA58773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3734387C-F363-4D4E-9DB3-6C302AA58773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3734387C-F363-4D4E-9DB3-6C302AA58773}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
