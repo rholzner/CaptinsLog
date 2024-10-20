@@ -58,8 +58,7 @@ public class LogEntryRepository : ILogEntryRepository
             var correlation = await _dbHelper.GetOrCreateCorrelationAsync(s, logEntry.CorrelationId);
             return await correlation.OnSuccessAsync(async cor =>
             {
-                var createdLog = await _dbHelper.CreateLogEntryAsync(cor, logEntry, null);
-                return createdLog;
+                return await _dbHelper.CreateLogEntryAsync(cor, logEntry, null);
             });
         });
     }
@@ -75,8 +74,7 @@ public class LogEntryRepository : ILogEntryRepository
                 var jsonData = _jsonSerializer.Serialize(logEntry.Data);
                 return await jsonData.OnSuccessAsync(async json =>
                 {
-                    var createdLog = await _dbHelper.CreateLogEntryAsync(cor, logEntry, json);
-                    return createdLog;
+                    return await _dbHelper.CreateLogEntryAsync(cor, logEntry, json);
                 });
             });
         });
